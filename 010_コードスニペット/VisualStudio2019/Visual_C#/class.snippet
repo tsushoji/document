@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>property</Title>
+            <Shortcut>mprop</Shortcut>
+            <Description>プロパティ</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>プロパティの型</ToolTip>
+                    <Default>string</Default>
+                </Literal>
+                <Literal>
+                    <ID>property</ID>
+                    <ToolTip>プロパティ名</ToolTip>
+                    <Default>Property</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[private $type$ _$property$;
+                        public $type$ $property$
+                        {
+                            set
+                            {
+                                this._$property$ = value;
+                            }
+
+                            get
+                            {
+                                return _$property$;
+                            }
+                        }$end$
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

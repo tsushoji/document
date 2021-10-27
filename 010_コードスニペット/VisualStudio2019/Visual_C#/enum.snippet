@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets>
+   <CodeSnippet Format="1.0.0">
+       <Header>
+           <Title>enum</Title>
+           <Shortcut>menum</Shortcut>
+           <Description>列挙テンプレート</Description>
+           <Author>ST</Author>
+       </Header>
+       <Snippet>
+           <Declarations>
+               <Literal>
+                   <ID>access</ID>
+                   <ToolTip>enumアクセス修飾子</ToolTip>
+                   <Default>private</Default>
+               </Literal>
+               <Literal>
+                   <ID>enum_name</ID>
+                   <ToolTip>enum名</ToolTip>
+                   <Default>Enum</Default>
+               </Literal>
+               <Literal>
+                   <ID>init_member</ID>
+                   <ToolTip>最初のメンバー</ToolTip>
+                   <Default>MEMBER_1</Default>
+               </Literal>
+               <Literal>
+                   <ID>end_member</ID>
+                   <ToolTip>最後のメンバー</ToolTip>
+                   <Default>MEMBER_2</Default>
+               </Literal>
+           </Declarations>
+           <Code Language="CSharp">
+               <![CDATA[$access$ enum $enum_name$
+                        {
+                            $init_member$,
+                            $end_member$,
+                        }$end$
+                ]]>
+           </Code>
+       </Snippet>
+   </CodeSnippet>
+
+   <CodeSnippet Format="1.0.0">
+       <Header>
+           <Title>指定ID付きenum</Title>
+           <Shortcut>menum_id</Shortcut>
+           <Description>指定ID付き列挙テンプレート</Description>
+           <Author>ST</Author>
+       </Header>
+       <Snippet>
+           <Declarations>
+               <Literal>
+                   <ID>access</ID>
+                   <ToolTip>enumアクセス修飾子</ToolTip>
+                   <Default>private</Default>
+               </Literal>
+               <Literal>
+                   <ID>enum_name</ID>
+                   <ToolTip>enum名</ToolTip>
+                   <Default>Enum</Default>
+               </Literal>
+               <Literal>
+                   <ID>init_member</ID>
+                   <ToolTip>最初のメンバー</ToolTip>
+                   <Default>MEMBER_1</Default>
+               </Literal>
+               <Literal>
+                   <ID>end_member</ID>
+                   <ToolTip>最後のメンバー</ToolTip>
+                   <Default>MEMBER_2</Default>
+               </Literal>
+               <Literal>
+                   <ID>init_member_id</ID>
+                   <ToolTip>最初のメンバーID</ToolTip>
+                   <Default>initId</Default>
+               </Literal>
+               <Literal>
+                   <ID>end_member_id</ID>
+                   <ToolTip>最後のメンバーID</ToolTip>
+                   <Default>endId</Default>
+               </Literal>
+               <Literal>
+                   <ID>id_type</ID>
+                   <ToolTip>IDの型</ToolTip>
+                   <Default>int</Default>
+               </Literal>
+           </Declarations>
+           <Code Language="CSharp">
+               <![CDATA[$access$ enum $enum_name$
+                        {
+                            $init_member$ = $init_member_id$,
+                            $end_member$ = $end_member_id$,
+                        }$end$
+                ]]>
+           </Code>
+       </Snippet>
+   </CodeSnippet>
+
+   <CodeSnippet Format="1.0.0">
+       <Header>
+           <Title>enumメンバー取得</Title>
+           <Shortcut>menum_get_member_from_str</Shortcut>
+           <Description>enumメンバー名文字列からenumメンバー取得</Description>
+           <Author>ST</Author>
+       </Header>
+       <Snippet>
+           <Declarations>
+               <Literal>
+                   <ID>enum_name</ID>
+                   <ToolTip>enum名</ToolTip>
+                   <Default>Enum</Default>
+               </Literal>
+           </Declarations>
+           <Code Language="CSharp">
+               <![CDATA[public static $enum_name$ Get$enum_name$(string memberStr)
+                        {
+                            foreach($enum_name$ val in Enum.GetValues(typeof($enum_name$)))
+	                        {
+	                            if(val.ToString().Equals(memberStr))
+	                            {
+	                                return val;
+	                            }
+	                        }
+                            throw new Exception();
+                        }$end$
+                ]]>
+           </Code>
+       </Snippet>
+   </CodeSnippet>
+</CodeSnippets>

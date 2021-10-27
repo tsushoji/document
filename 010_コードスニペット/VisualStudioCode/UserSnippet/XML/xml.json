@@ -1,0 +1,37 @@
+{
+	"Print to console": {
+		"prefix": "snippet_template_visualstudio",
+		"body": [
+			"<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
+			"<CodeSnippets>",
+			"   <CodeSnippet Format=\"$1\">",
+			"       <Header>",
+			"           <Title>$2</Title>",
+			"           <Shortcut>$3</Shortcut>",
+			"           <Description>$4</Description>",
+			"           <Author>ST</Author>",
+			"       </Header>",
+			"       <Snippet>",
+			"           <Declarations>",
+			"               <Literal>",
+			"                   <ID></ID>",
+			"                   <ToolTip></ToolTip>",
+			"                   <Default></Default>",
+			"               </Literal>",
+			"               <Literal>",
+			"                   <ID></ID>",
+			"                   <ToolTip></ToolTip>",
+			"                   <Default></Default>",
+			"               </Literal>",
+			"           </Declarations>",
+			"           <Code Language=\"$5\">",
+			"               <![CDATA[$6",
+			"               ]]>",
+			"           </Code>",  
+			"       </Snippet>",
+			"   </CodeSnippet>",
+			"</CodeSnippets>"
+		],
+		"description": "VisualStudioのコードスニペットテンプレート"
+	}
+}
