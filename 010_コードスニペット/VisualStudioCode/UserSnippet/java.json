@@ -1,0 +1,12 @@
+{
+	"JavaMainClassTemplate": {
+		"prefix": "java_main_class_template",
+		"body": [
+			"public class Main {",
+			"    public static void main(String[] args) throws Exception {",
+			"    }",
+			"}"
+		],
+		"description": "JavaのMainクラステンプレート"
+	}
+}
