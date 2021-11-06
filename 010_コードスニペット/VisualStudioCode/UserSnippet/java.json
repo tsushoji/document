@@ -8,5 +8,62 @@
 			"}"
 		],
 		"description": "JavaのMainクラステンプレート"
+	},
+
+	"If": {
+		"prefix": "if",
+		"body": [
+			"if {",
+			"}"
+		],
+		"description": "If文"
+	},
+	"IfElse": {
+		"prefix": "if_else",
+		"body": [
+			"if {",
+			"}",
+			"else {",
+			"}"
+		],
+		"description": "IfElse文"
+	},
+	"ElseIf": {
+		"prefix": "if_elseif",
+		"body": [
+			"if {",
+			"}",
+			"else if {",
+			"}",
+			"else {",
+			"}"
+		],
+		"description": "ElseIf文"
+	},
+
+	"While": {
+		"prefix": "while",
+		"body": [
+			"while {",
+			"}"
+		],
+		"description": "while文"
+	},
+
+	"For": {
+		"prefix": "for",
+		"body": [
+			"for(var i = $1; i < $2; i$3){",
+			"}"
+		],
+		"description": "for文"
+	},
+	"ForExtension": {
+		"prefix": "for_extension",
+		"body": [
+			"for($1 $2: $3){",
+			"}"
+		],
+		"description": "for拡張文"
 	}
 }
