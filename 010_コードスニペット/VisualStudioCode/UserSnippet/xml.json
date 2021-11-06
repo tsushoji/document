@@ -1,6 +1,6 @@
 {
-	"Print to console": {
-		"prefix": "snippet_template_visualstudio",
+	"CodeSnippetTemplateVisualStudio": {
+		"prefix": "code_snippet_template_visualstudio",
 		"body": [
 			"<?xml version=\"1.0\" encoding=\"utf-8\" ?>",
 			"<CodeSnippets>",
