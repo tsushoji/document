@@ -9,6 +9,52 @@
 		],
 		"description": "JavaのMainクラステンプレート"
 	},
+	"PublicClassTemplate": {
+		"prefix": "public_class_template",
+		"body": [
+			"public class $1 {",
+			"}"
+		],
+		"description": "publicクラステンプレート"
+	},
+	"PublicStaticClassTemplate": {
+		"prefix": "public_static_class_template",
+		"body": [
+			"public static class $1 {",
+			"}"
+		],
+		"description": "静的publicクラステンプレート"
+	},
+
+	"PrivateFinal": {
+		"prefix": "private_final",
+		"body": [
+			"private final $1 $2"
+		],
+		"description": "privateかつ変更不可能なメンバー"
+	},
+	"PrivateStaticFinal": {
+		"prefix": "private_static_final",
+		"body": [
+			"private static final $1 $2"
+		],
+		"description": "静的かつprivateかつ変更不可能なメンバー"
+	},
+
+	"PublicConstructorNoArgs": {
+		"prefix": "public_constructor_no_args",
+		"body": [
+			"public $1() {}"
+		],
+		"description": "public引数なしコンストラクタ"
+	},
+	"PrivateConstructorNoArgs": {
+		"prefix": "private_constructor_no_args",
+		"body": [
+			"private $1() {}"
+		],
+		"description": "private引数なしコンストラクタ"
+	},
 
 	"If": {
 		"prefix": "if",
@@ -65,5 +111,22 @@
 			"}"
 		],
 		"description": "for拡張文"
+	},
+	"TryCatch": {
+		"prefix": "try_catch",
+		"body": [
+			"try {",
+			"}catch($1 $2){",
+			"}"
+		],
+		"description": "try-catch文"
+	},
+
+	"MapHashMapInstance": {
+		"prefix": "map_hashmap_instance",
+		"body": [
+			"Map<$1, $2> $3 = new HashMap<$1, $2>()"
+		],
+		"description": "HashMapのインスタンス化"
 	}
 }
