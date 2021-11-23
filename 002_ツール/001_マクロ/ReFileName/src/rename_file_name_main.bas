@@ -1,4 +1,4 @@
-Attribute VB_Name = "ModMain"
+Attribute VB_Name = "rename_file_name_main"
 'ファイル名マスタシート列定義
 Public Enum Column
 
@@ -27,10 +27,10 @@ blnErrFlag = True
 With Sheet1
 
 'メインシートにて、名前を変更するファイルのフォルダパスを指定しているか確認
-If .Range("FilePath") = ModDeclare.strBlank Then
+If .Range("FilePath") = constant.strBlank Then
 
     'エラーメッセージを出力
-    .Range("Message") = ModDeclare.strErrMessage5
+    .Range("Message") = constant.strErrMessage5
     'フォルダパスが指定されていないため、処理終了
     Exit Sub
 
@@ -54,25 +54,25 @@ If intCount > 1 Then
     For i = 2 To intCount
     
         '変更前ファイルパス取得
-        strBeforeFilePath = strFolderPath & ModDeclare.strDollarMark & .Cells(i, Column.BeforeChangeFileName)
+        strBeforeFilePath = strFolderPath & constant.strDollarMark & .Cells(i, Column.BeforeChangeFileName)
         '変更後ファイルパス取得
-        strAfterFilePath = strFolderPath & ModDeclare.strDollarMark & .Cells(i, Column.AfterChangeFileName)
+        strAfterFilePath = strFolderPath & constant.strDollarMark & .Cells(i, Column.AfterChangeFileName)
            
             'ファイル名マスタにて、ファイル名を指定しているか確認
-            If .Cells(i, Column.BeforeChangeFileName) <> ModDeclare.strBlank And .Cells(i, Column.AfterChangeFileName) <> ModDeclare.strBlank Then
+            If .Cells(i, Column.BeforeChangeFileName) <> constant.strBlank And .Cells(i, Column.AfterChangeFileName) <> constant.strBlank Then
             
                 'ファイル名マスタにて、指定したファイル名がフォルダに存在するか確認
-                If Dir(strBeforeFilePath) <> ModDeclare.strBlank Then
+                If Dir(strBeforeFilePath) <> constant.strBlank Then
                 
                     '存在する場合、ファイル名変更
                     Name strBeforeFilePath As strAfterFilePath
                     
                     '存在しない場合、ファイル名マスタに"OK"を書き出す
-                    .Cells(i, Column.Error) = ModDeclare.strEvaluation1
+                    .Cells(i, Column.Error) = constant.strEvaluation1
                 
                 Else
                     
-                    .Cells(i, Column.Error) = ModDeclare.strEvaluation2
+                    .Cells(i, Column.Error) = constant.strEvaluation2
                     'エラーフラグにFalseをセット
                     blnErrFlag = False
                 
@@ -81,7 +81,7 @@ If intCount > 1 Then
             Else
             
                 '指定していない場合、ファイル名マスタに"NG"を書き出す
-                .Cells(i, Column.Error) = ModDeclare.strEvaluation2
+                .Cells(i, Column.Error) = constant.strEvaluation2
                 'エラーフラグにFalseをセット
                 blnErrFlag = False
             
@@ -105,12 +105,12 @@ With Sheet1
 If blnErrFlag Then
 
     'エラーフラグがTrueの場合
-    .Range("Message") = ModDeclare.strMessage1
+    .Range("Message") = constant.strMessage1
 
 Else
 
     'エラーフラグがFalseの場合
-    .Range("Message") = ModDeclare.strErrMessage1 & vbLf & ModDeclare.strErrMessage2
+    .Range("Message") = constant.strErrMessage1 & vbLf & constant.strErrMessage2
 
 End If
 
@@ -122,8 +122,9 @@ Exit Sub
 '異常時、メッセージボックス
 errHandler:
 
-MsgBox ModDeclare.strErrMessage3 & vbLf & ModDeclare.strErrMessage4 & Err.Description
+MsgBox constant.strErrMessage3 & vbLf & constant.strErrMessage4 & Err.Description
 
 End Sub
+
 
 

@@ -1,4 +1,4 @@
-Attribute VB_Name = "ModDeclare"
+Attribute VB_Name = "constant"
 Public Const intRowsNum1 As Integer = 1
 Public Const strMessage1 As String = "‚·‚×‚Ä‚Ìƒtƒ@ƒCƒ‹–¼‚ğ•ÏXŠ®—¹"
 Public Const strErrMessage1 As String = "ˆê•”‚Ìƒtƒ@ƒCƒ‹–¼‚ğ•ÏXo—ˆ‚Ü‚¹‚ñ"
@@ -12,4 +12,3 @@ Public Const strBlank As String = ""
 Public Const strDollarMark As String = "€"
 Public Const strAsteriskMark As String = "*"
 Public Const strDotMark As String = "."
-
