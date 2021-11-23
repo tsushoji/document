@@ -6,9 +6,10 @@ Public Const strErrMessage2 As String = "ƒtƒ@ƒCƒ‹–¼ƒ}ƒXƒ^[ƒV[ƒg‚ğ‚²Šm”F‚­‚¾‚³‚
 Public Const strErrMessage3 As String = "ˆÙí‚ª”­¶‚µ‚½‚½‚ßAˆ—‚ğI—¹‚¢‚½‚µ‚Ü‚·B"
 Public Const strErrMessage4 As String = "ƒGƒ‰[“à—e"
 Public Const strErrMessage5 As String = "ƒtƒHƒ‹ƒ_ƒpƒX‚ğw’è‚µ‚Ä‚­‚¾‚³‚¢"
+Public Const strErrMessage6 As String = "ƒtƒHƒ‹ƒ_ƒpƒX‚ª‘¶İ‚µ‚Ü‚¹‚ñ"
 Public Const strEvaluation1 As String = "OK"
 Public Const strEvaluation2 As String = "NG"
 Public Const strBlank As String = ""
-Public Const strDollarMark As String = "€"
-Public Const strAsteriskMark As String = "*"
+Public Const strDollarMark As String = "€\"
 Public Const strDotMark As String = "."
+

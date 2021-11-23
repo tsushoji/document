@@ -5,9 +5,6 @@ Sub OutputFileName()
 On Error GoTo errHandler
 
 Dim strFolderPath As String
-Dim strBeforeFilePath As String
-Dim strFileName As String
-Dim j As Integer
 
 With Sheet1
 
@@ -25,22 +22,31 @@ Else
 
 End If
 
+Dim fileSystemObject As fileSystemObject
+Set fileSystemObject = CreateObject("Scripting.FileSystemObject")
+
+If (fileSystemObject.FolderExists(strFolderPath) = False) Then
+    'エラーメッセージを出力
+    .Range("Message") = constant.strErrMessage6
+    'フォルダパスが存在していないため、処理終了
+    Exit Sub
+End If
+
 End With
 
-'変更前ファイルパス取得
-strBeforeFilePath = strFolderPath & constant.strDollarMark & constant.strAsteriskMark & constant.strDotMark & constant.strAsteriskMark
+Dim folder As folder
+Set folder = fileSystemObject.GetFolder(strFolderPath)
 
-'対象セルにファイル名を出力
-strFileName = Dir(strBeforeFilePath)
+Dim file As file
+
+Dim j As Integer
 j = constant.intRowsNum1
 
-Do While strFileName <> constant.strBlank
-
-j = j + 1
-Sheet2.Cells(j, Column.BeforeChangeFileName) = strFileName
-strFileName = Dir()
-
-Loop
+For Each file In folder.Files
+    j = j + 1
+    '変更前ファイルカラムに取得したファイル名を取得
+    Sheet2.Cells(j, Column.BeforeChangeFileName) = file.Name
+Next
 
 '異常でない場合、処理終了
 Exit Sub
@@ -51,5 +57,4 @@ errHandler:
 MsgBox constant.strErrMessage3 & vbLf & constant.strErrMessage4 & Err.Description
 
 End Sub
-
 
