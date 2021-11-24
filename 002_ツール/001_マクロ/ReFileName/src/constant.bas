@@ -12,4 +12,6 @@ Public Const strEvaluation2 As String = "NG"
 Public Const strBlank As String = ""
 Public Const strDollarMark As String = "€\"
 Public Const strDotMark As String = "."
+Public Const strBackupPathName As String = "backup"
+
 

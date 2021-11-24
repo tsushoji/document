@@ -14,13 +14,9 @@ Sub FileNameChange()
 On Error GoTo errHandler
 
 Dim strFolderPath As String
-Dim strBeforeFilePath As String
-Dim strAfterFilePath As String
 Dim strMessage As String
-Dim intCount As Integer
-Dim i As Integer
 Dim blnErrFlag As Boolean
-
+                
 'エラーフラグにTrueをセット
 blnErrFlag = True
 
@@ -42,6 +38,12 @@ End If
 
 End With
 
+Dim intCount As Integer
+Dim i As Integer
+Dim strBeforeFilePath As String
+Dim strAfterFilePath As String
+Dim strAfterFileName As String
+
 With Sheet2
 
 'ファイル名マスタの最終行を取得
@@ -50,24 +52,57 @@ intCount = .Cells(Rows.Count, Column.BeforeChangeFileName).End(xlUp).Row
 'ファイル名マスタにデータがあるか確認
 If intCount > 1 Then
 
+    Dim fileSystemObject As fileSystemObject
+    Set fileSystemObject = CreateObject("Scripting.FileSystemObject")
+    
+    Dim backupFolder As String
+    Dim afterChangeFolder As String
+    
     'ファイル名変更
     For i = 2 To intCount
     
         '変更前ファイルパス取得
-        strBeforeFilePath = strFolderPath & constant.strDollarMark & .Cells(i, Column.BeforeChangeFileName)
+        strBeforeFilePath = fileSystemObject.BuildPath(strFolderPath, .Cells(i, Column.BeforeChangeFileName))
         '変更後ファイルパス取得
-        strAfterFilePath = strFolderPath & constant.strDollarMark & .Cells(i, Column.AfterChangeFileName)
+        strAfterFilePath = fileSystemObject.BuildPath(strFolderPath, .Cells(i, Column.AfterChangeFileName))
            
             'ファイル名マスタにて、ファイル名を指定しているか確認
             If .Cells(i, Column.BeforeChangeFileName) <> constant.strBlank And .Cells(i, Column.AfterChangeFileName) <> constant.strBlank Then
             
-                'ファイル名マスタにて、指定したファイル名がフォルダに存在するか確認
-                If Dir(strBeforeFilePath) <> constant.strBlank Then
+                '変更後ファイルパスにフォルダパスが指定されていないか確認
+                If InStr(fileSystemObject.GetFileName(strAfterFilePath), constant.strDotMark) = 0 Then
+                 
+                    .Cells(i, Column.Error) = constant.strEvaluation2
+                    'エラーフラグにFalseをセット
+                    blnErrFlag = False
+                    GoTo file_name_change_rename_continue
                 
-                    '存在する場合、ファイル名変更
-                    Name strBeforeFilePath As strAfterFilePath
+                End If
+                
+                'ファイル名マスタにて、指定したファイル名がフォルダに存在するか確認
+                If fileSystemObject.FileExists(strBeforeFilePath) Then
                     
-                    '存在しない場合、ファイル名マスタに"OK"を書き出す
+                    'バックアップファイル作成
+                    backupFolder = fileSystemObject.BuildPath(strFolderPath, constant.strBackupPathName)
+                    
+                    If fileSystemObject.FolderExists(backupFolder) = False Then
+                        fileSystemObject.CreateFolder (backupFolder)
+                    End If
+                    
+                    FileCopy strBeforeFilePath, fileSystemObject.BuildPath(backupFolder, .Cells(i, Column.BeforeChangeFileName))
+                
+                    afterChangeFolder = fileSystemObject.GetParentFolderName(strAfterFilePath)
+                    If fileSystemObject.FolderExists(afterChangeFolder) = False Then
+                        fileSystemObject.CreateFolder (afterChangeFolder)
+                    End If
+                    
+                    'ファイル名変更
+                    'コピー(上書き)
+                    FileCopy strBeforeFilePath, strAfterFilePath
+                    '元ファイル削除
+                    Kill strBeforeFilePath
+                    
+                    '成功した場合、ファイル名マスタに"OK"を書き出す
                     .Cells(i, Column.Error) = constant.strEvaluation1
                 
                 Else
@@ -75,6 +110,7 @@ If intCount > 1 Then
                     .Cells(i, Column.Error) = constant.strEvaluation2
                     'エラーフラグにFalseをセット
                     blnErrFlag = False
+                    GoTo file_name_change_rename_continue
                 
                 End If
             
@@ -84,9 +120,12 @@ If intCount > 1 Then
                 .Cells(i, Column.Error) = constant.strEvaluation2
                 'エラーフラグにFalseをセット
                 blnErrFlag = False
+                GoTo file_name_change_rename_continue
             
             End If
             
+file_name_change_rename_continue:
+    
     Next
 
 Else
@@ -99,7 +138,6 @@ End If
 End With
 
 With Sheet1
-'20190612 辻修正 End
 
 'メインシートに処理結果出力
 If blnErrFlag Then
