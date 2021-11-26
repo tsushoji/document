@@ -1,5 +1,4 @@
-#参照設定  
-
-- Microsoft Scripting Runtime  
-→FileSystemObject  
+# 参照設定  
+## Microsoft Scripting Runtime  
+* FileSystemObject  
 
