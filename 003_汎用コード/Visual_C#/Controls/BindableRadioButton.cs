@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace BitOperationWinApp.Controls
+namespace Controls
 {
     public class BindableRadioButton : RadioButton
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace BitOperationWinApp.ViewModels
+namespace ViewModels
 {
     public abstract class ViewModelBase: INotifyPropertyChanged
     {
