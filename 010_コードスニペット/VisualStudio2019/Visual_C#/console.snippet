@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>console_readline</Title>
+            <Shortcut>mconsole_reli</Shortcut>
+            <Description>コンソール1行読み込み</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[Console.ReadLine()]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>console_writeline</Title>
+            <Shortcut>mconsole_wrli</Shortcut>
+            <Description>コンソール1行書き込み</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>args</ID>
+                    <ToolTip>引数</ToolTip>
+                    <Default>args</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[Console.WriteLine($args$);$end$]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
