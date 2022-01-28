@@ -38,4 +38,69 @@
             </Code>   
         </Snippet>
     </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>method_public_void</Title>
+            <Shortcut>mmethod_pub_void</Shortcut>
+            <Description>public修飾子voidメソッド</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>method_name</ID>
+                    <ToolTip>メソッド名</ToolTip>
+                    <Default>method</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[public void $method_name$()
+                        {
+                            
+                        }$end$
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>method_private</Title>
+            <Shortcut>mmethod_pri</Shortcut>
+            <Description>private修飾子メソッド</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>method_name</ID>
+                    <ToolTip>メソッド名</ToolTip>
+                    <Default>method</Default>
+                </Literal>
+                <Literal>
+                    <ID>args</ID>
+                    <ToolTip>引数</ToolTip>
+                    <Default>args</Default>
+                </Literal>
+                <Literal>
+                    <ID>args_type</ID>
+                    <ToolTip>引数型</ToolTip>
+                    <Default>string</Default>
+                </Literal>
+                <Literal>
+                    <ID>return_type</ID>
+                    <ToolTip>戻り値型</ToolTip>
+                    <Default>bool</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[private $return_type$ $method_name$($args_type$ $args$)
+                        {
+                            
+                        }$end$
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
 </CodeSnippets>
