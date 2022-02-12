@@ -12,5 +12,5 @@
 ※必要なバージョンの.NET Frameworkインストーラについては以下パス  
 ・C:\Users\[ユーザー名]\AppData\Local\SeleniumBasic\Scripts 内のStartChrome.vbs  
 5.以下画像のようにExcelVBAの参照設定をする  
-![ExcelVBAの参照設定](README/img/参照設定_1.png)
+![ExcelVBAの参照設定](README/img/参照設定_1.png)  
 6.「CreateFile.xlsm」の同階層に「output」フォルダを作成  
