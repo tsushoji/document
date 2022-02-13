@@ -89,8 +89,6 @@ Function ScrapWeb_Chrome(ByVal targetPageURL As String, ByRef atCoderSrcFile() A
     
     manageNum = manageNum + 1
   Next
-
-  Stop
   
   atCoderSrcFileLastIndex = atCoderSrcFileIndex
   
