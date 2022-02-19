@@ -2,9 +2,9 @@
 <CodeSnippets>
     <CodeSnippet Format="1.0.0">
         <Header>
-            <Title>property</Title>
-            <Shortcut>prop_my</Shortcut>
-            <Description>プロパティ</Description>
+            <Title>property_public_with_member</Title>
+            <Shortcut>pub_prop_my_with_mem</Shortcut>
+            <Description>メンバー付きpublic修飾子プロパティ</Description>
             <Author>ST</Author>
         </Header>
         <Snippet>
@@ -41,6 +41,32 @@
 
     <CodeSnippet Format="1.0.0">
         <Header>
+            <Title>property_public</Title>
+            <Shortcut>pub_prop_my</Shortcut>
+            <Description>public修飾子プロパティ</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>type</ID>
+                    <ToolTip>プロパティの型</ToolTip>
+                    <Default>string</Default>
+                </Literal>
+                <Literal>
+                    <ID>property</ID>
+                    <ToolTip>プロパティ名</ToolTip>
+                    <Default>Property</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[public $type$ $property$ { get; set; }$end$]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+        <Header>
             <Title>method_public_void</Title>
             <Shortcut>pub_void_method_my</Shortcut>
             <Description>public修飾子voidメソッド</Description>
@@ -61,6 +87,46 @@
                         }$end$
                 ]]>
             </Code>   
+        </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>method_public_static</Title>
+            <Shortcut>pub_static_method_my</Shortcut>
+            <Description>public修飾子staticメソッド</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>method_name</ID>
+                    <ToolTip>メソッド名</ToolTip>
+                    <Default>method</Default>
+                </Literal>
+                <Literal>
+                    <ID>args</ID>
+                    <ToolTip>引数</ToolTip>
+                    <Default>args</Default>
+                </Literal>
+                <Literal>
+                    <ID>args_type</ID>
+                    <ToolTip>引数型</ToolTip>
+                    <Default>string</Default>
+                </Literal>
+                <Literal>
+                    <ID>return_type</ID>
+                    <ToolTip>戻り値型</ToolTip>
+                    <Default>bool</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[public static $return_type$ $method_name$($args_type$ $args$)
+                        {
+                            
+                        }$end$
+                ]]>
+            </Code>
         </Snippet>
     </CodeSnippet>
 
