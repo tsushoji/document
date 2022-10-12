@@ -1,0 +1,38 @@
+{
+    "[java]": {
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+    },
+    "[python]": {
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+    },
+    "[json]": {
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+    },
+    "[javascript]": {
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+    },
+    "[html]": {
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+    },
+    "[css]": {
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+    },
+    "[C#]": {
+        "files.encoding": "shiftjis",
+        "files.eol": "\r\n",
+    },
+    "[vb]": {
+        "files.encoding": "shiftjis",
+        "files.eol": "\r\n",
+    },
+    "[csv]": {
+        "files.encoding": "shiftjis",
+        "files.eol": "\r\n",
+    },
+}
