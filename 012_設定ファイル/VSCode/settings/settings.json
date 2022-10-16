@@ -1,38 +1,46 @@
 {
     "[java]": {
+        "editor.tabSize": 1,
         "files.encoding": "utf8",
-        "files.eol": "\n",
+        "files.eol": "\n"
     },
     "[python]": {
+        "editor.tabSize": 1,
         "files.encoding": "utf8",
-        "files.eol": "\n",
+        "files.eol": "\n"
     },
     "[json]": {
+        "editor.tabSize": 1,
         "files.encoding": "utf8",
-        "files.eol": "\n",
+        "files.eol": "\n"
     },
     "[javascript]": {
+        "editor.tabSize": 1,
         "files.encoding": "utf8",
-        "files.eol": "\n",
+        "files.eol": "\n"
     },
     "[html]": {
+        "editor.tabSize": 1,
         "files.encoding": "utf8",
-        "files.eol": "\n",
+        "files.eol": "\n"
     },
     "[css]": {
+        "editor.tabSize": 1,
         "files.encoding": "utf8",
-        "files.eol": "\n",
+        "files.eol": "\n"
     },
     "[C#]": {
+        "editor.tabSize": 1,
         "files.encoding": "shiftjis",
-        "files.eol": "\r\n",
+        "files.eol": "\r\n"
     },
     "[vb]": {
+        "editor.tabSize": 1,
         "files.encoding": "shiftjis",
-        "files.eol": "\r\n",
+        "files.eol": "\r\n"
     },
     "[csv]": {
         "files.encoding": "shiftjis",
-        "files.eol": "\r\n",
-    },
+        "files.eol": "\r\n"
+    }
 }
