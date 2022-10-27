@@ -19,6 +19,10 @@
         "files.encoding": "utf8",
         "files.eol": "\n"
     },
+    "[php]": {
+        "files.encoding": "utf8",
+        "files.eol": "\n",
+    },
     "[html]": {
         "editor.tabSize": 1,
         "files.encoding": "utf8",
