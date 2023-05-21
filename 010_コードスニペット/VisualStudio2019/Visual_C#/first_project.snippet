@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>post_operation_first_project</Title>
+            <Shortcut>post_operation_first_project</Shortcut>
+            <Description>dataverseのpost_operationステージテンプレート</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[var outputLog = new StringBuilder();
+                        //処理結果→1:正常
+                        var resultOptionLogKanri = 1;
+
+                        Guid logKanriEnitityId = Guid.Empty;
+                        Entity logKanriEnitity = null;
+
+                        try
+                        {
+                            //ログテーブル新規作成
+                            logKanriEnitity = new Entity("px03_tl001");
+                            logKanriEnitity["px03_fc_id"] = FuncId;
+                            logKanriEnitity["px03_sc_id"] = ScreenId;
+                            logKanriEnitity["px03_pr_sb"] = new OptionSetValue(2);
+                            logKanriEnitity["px03_prst_dttm"] = DateTime.UtcNow;
+                            logKanriEnitityId = svc.Create(logKanriEnitity);
+
+                            //トリガーテーブル新規作成
+
+                            //メイン処理
+                        }
+                        catch (Exception e)
+                        {
+                            outputLog.AppendLine("例外エラー");
+                            outputLog.AppendLine(e.Message);
+                            outputLog.AppendLine(e.StackTrace);
+                            //処理結果→2:エラー
+                            resultOptionLogKanri = 2;
+                        }
+                        finally
+                        {
+                            //トリガーテーブル更新
+
+                            //ログテーブル更新
+                            logKanriEnitity = new Entity("px03_tl001");
+                            logKanriEnitity.Id = logKanriEnitityId;
+                            logKanriEnitity["px03_pr_rt"] = new OptionSetValue(resultOptionLogKanri);
+                            if (outputLog.Length > 0)
+                                logKanriEnitity["px03_pr_rt_ct"] = outputLog.ToString();
+                            logKanriEnitity["px03_pred_dttm"] = DateTime.UtcNow;
+                            svc.Update(logKanriEnitity);
+                        }
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>pre_validation_first_project</Title>
+            <Shortcut>pre_validation_first_project</Shortcut>
+            <Description>dataverseのpre_validationステージテンプレート</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[var outputLog = new StringBuilder();
+                        var outputMessage = new StringBuilder();
+                        //処理結果→1:正常
+                        var resultOptionLogKanri = 1; 
+
+                        Guid logKanriEnitityId = Guid.Empty;
+                        Entity logKanriEnitity = null;
+
+                        try
+                        {
+                            //ログテーブル新規作成
+                            logKanriEnitity = new Entity("px03_tl001");
+                            logKanriEnitity["px03_fc_id"] = FuncId;
+                            logKanriEnitity["px03_sc_id"] = ScreenId;
+                            logKanriEnitity["px03_pr_sb"] = new OptionSetValue(2);
+                            logKanriEnitity["px03_prst_dttm"] = DateTime.UtcNow;
+                            logKanriEnitityId = svc.Create(logKanriEnitity);
+
+                            //トリガーテーブル新規作成
+
+                            //メイン処理
+                            var isValidate = false;
+                            if(!isValidate)
+                                outputMessage.AppendLine("出力エラーメッセージ")
+                        }
+                        catch(Exception e)
+                        {
+                            outputLog.AppendLine("例外エラー");
+                            outputLog.AppendLine(e.Message);
+                            outputLog.AppendLine(e.StackTrace);
+                            //処理結果→2:エラー
+                            resultOptionLogKanri = 2;
+                        }
+                        finally
+                        {
+                            //トリガーテーブル更新
+
+                            //ログテーブル更新
+                            logKanriEnitity = new Entity("px03_tl001");
+                            logKanriEnitity.Id = logKanriEnitityId;
+                            logKanriEnitity["px03_pr_rt"] = new OptionSetValue(resultOptionLogKanri);
+                            if (outputLog.Length > 0)
+                                logKanriEnitity["px03_pr_rt_ct"] = outputLog.ToString();
+                            logKanriEnitity["px03_pred_dttm"] = DateTime.UtcNow;
+                            svc.Update(logKanriEnitity);
+
+                            //バリデーションチェックエラーメッセージ出力
+                            if (outputMessage.Length > 0)
+                                throw new InvalidPluginExecutionException(outputMessage.ToString());
+                        }                
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

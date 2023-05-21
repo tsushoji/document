@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>dataverse_sdk_service</Title>
+            <Shortcut>dataverse_sdk_service</Shortcut>
+            <Description>dataverseSDKサービスオブジェクト取得</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+                <![CDATA[IPluginExecutionContext context = (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
+                        IOrganizationServiceFactory serviceFactory = (IOrganizationServiceFactory)serviceProvider.GetService(typeof(IOrganizationServiceFactory));
+                        IOrganizationService svc = serviceFactory.CreateOrganizationService(context.UserId);
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>dataverse_sdk_read_fetchxml</Title>
+            <Shortcut>dataverse_sdk_read_fetchxml</Shortcut>
+            <Description>dataverseSDKデータ取得(fetchxml)</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>result_let_name</ID>
+                    <ToolTip>取得テーブル変数名</ToolTip>
+                    <Default>result_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>fetchxml</ID>
+                    <ToolTip>fetchxml</ToolTip>
+                    <Default>fetchxml</Default>
+                </Literal>
+                <Literal>
+                    <ID>result_id_let_name</ID>
+                    <ToolTip>取得値変数名</ToolTip>
+                    <Default>result_id_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>result_value_let_name</ID>
+                    <ToolTip>取得値変数名</ToolTip>
+                    <Default>result_value_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>result_column_name</ID>
+                    <ToolTip>取得列名</ToolTip>
+                    <Default>result_column_name</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[string fetchXml$result_let_name$ = $fetchxml$;
+                        var query$result_let_name$ = new FetchExpression(fetchXml$result_let_name$);
+                        var $result_let_name$Entities = svc.RetrieveMultiple(query$result_let_name$).Entities;
+                        var $result_id_let_name$ = Entities[0].Id;
+                        var $result_value_let_name$ = Entities[0]["result_column_name"];
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>dataverse_sdk_create</Title>
+            <Shortcut>dataverse_sdk_create</Shortcut>
+            <Description>dataverseSDK新規作成</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>create_entity_let_name</ID>
+                    <ToolTip>作成テーブル変数名</ToolTip>
+                    <Default>create_entity_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_entity_name</ID>
+                    <ToolTip>作成テーブル名</ToolTip>
+                    <Default>create_entity_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_entity_column_name</ID>
+                    <ToolTip>作成列名</ToolTip>
+                    <Default>create_entity_column_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_entity_column_value</ID>
+                    <ToolTip>作成列値</ToolTip>
+                    <Default>create_entity_column_value</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_entity_select_column_name</ID>
+                    <ToolTip>作成選択肢列名</ToolTip>
+                    <Default>create_entity_select_column_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_entity_select_index_value</ID>
+                    <ToolTip>作成選択肢インデックス値</ToolTip>
+                    <Default>0</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_relation_entity_name</ID>
+                    <ToolTip>作成リレーション先テーブル名</ToolTip>
+                    <Default>create_relation_entity_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_relation_entity_guid</ID>
+                    <ToolTip>作成リレーション先テーブルGUID</ToolTip>
+                    <Default>create_relation_entity_guid</Default>
+                </Literal>
+                <Literal>
+                    <ID>create_relation_column_name</ID>
+                    <ToolTip>作成リレーション列名</ToolTip>
+                    <Default>create_relation_column_name</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[var create$create_entity_let_name$Entity = new Entity("$create_entity_name$");
+                        create$create_entity_let_name$Entity["$create_entity_column_name$"] = $create_entity_column_value$;
+                        create$create_entity_let_name$Entity["$create_entity_select_column_name$"] = new OptionSetValue($create_entity_select_index_value$);
+                        create$create_entity_let_name$Entity["$create_relation_column_name$"] = new EntityReference("$create_relation_entity_name$", $create_relation_entity_guid$);
+                        svc.Create(create$create_entity_let_name$Entity);
+                        ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>dataverse_sdk_update</Title>
+            <Shortcut>dataverse_sdk_update</Shortcut>
+            <Description>dataverseSDK更新</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>update_entity_let_name</ID>
+                    <ToolTip>更新テーブル変数名</ToolTip>
+                    <Default>update_entity_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_entity_name</ID>
+                    <ToolTip>更新テーブル名</ToolTip>
+                    <Default>update_entity_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_entity_guid</ID>
+                    <ToolTip>更新GUID</ToolTip>
+                    <Default>update_entity_guid</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_entity_column_name</ID>
+                    <ToolTip>更新列名</ToolTip>
+                    <Default>update_entity_column_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_entity_column_value</ID>
+                    <ToolTip>更新列値</ToolTip>
+                    <Default>update_entity_column_value</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_entity_select_column_name</ID>
+                    <ToolTip>更新選択肢列名</ToolTip>
+                    <Default>update_entity_select_column_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_entity_select_index_value</ID>
+                    <ToolTip>更新選択肢インデックス値</ToolTip>
+                    <Default>0</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_relation_entity_name</ID>
+                    <ToolTip>更新リレーション先テーブル名</ToolTip>
+                    <Default>update_relation_entity_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_relation_entity_guid</ID>
+                    <ToolTip>更新リレーション先テーブルGUID</ToolTip>
+                    <Default>update_relation_entity_guid</Default>
+                </Literal>
+                <Literal>
+                    <ID>update_relation_column_name</ID>
+                    <ToolTip>更新リレーション列名</ToolTip>
+                    <Default>update_relation_column_name</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[var update$update_entity_let_name$Entity = new Entity("$update_entity_name$");
+                        update$update_entity_let_name$Entity.Id = $update_entity_guid$;
+                        update$update_entity_let_name$Entity["$update_entity_column_name$"] = $update_entity_column_value$;
+                        update$update_entity_let_name$Entity["$update_entity_select_column_name$"] = new OptionSetValue($update_entity_select_index_value$);
+                        update$update_entity_let_name$Entity["$update_relation_column_name$"] = new EntityReference("$update_relation_entity_name$", $update_relation_entity_guid$);
+                        svc.Update(update$update_entity_let_name$Entity);
+                        ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>dataverse_sdk_delete</Title>
+            <Shortcut>dataverse_sdk_delete</Shortcut>
+            <Description>dataverseSDK削除</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>delete_entity_name</ID>
+                    <ToolTip>削除テーブル名</ToolTip>
+                    <Default>delete_entity_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>delete_entity_guid</ID>
+                    <ToolTip>削除GUID</ToolTip>
+                    <Default>delete_entity_guid</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[svc.Delete("$delete_entity_name$", $delete_entity_guid$);]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
