@@ -119,4 +119,81 @@
             </Code>   
         </Snippet>
     </CodeSnippet>
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>get_message_first_project</Title>
+            <Shortcut>get_message_first_project</Shortcut>
+            <Description>dataverseメッセージ取得</Description>
+            <Author>ST</Author>
+        </Header>
+        <Snippet>
+            <Declarations>
+                <Literal>
+                    <ID>message_code_let_name</ID>
+                    <ToolTip>メッセージコード変数名</ToolTip>
+                    <Default>message_code_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>message_lng_let_name</ID>
+                    <ToolTip>メッセージコードロケール変数名</ToolTip>
+                    <Default>message_lng_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>message_code_let_name</ID>
+                    <ToolTip>メッセージコード変数名</ToolTip>
+                    <Default>message_code_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>message_let_name</ID>
+                    <ToolTip>メッセージ変数名</ToolTip>
+                    <Default>message_let_name</Default>
+                </Literal>
+                <Literal>
+                    <ID>message</ID>
+                    <ToolTip>メッセージ</ToolTip>
+                    <Default>message</Default>
+                </Literal>
+            </Declarations>
+            <Code Language="CSharp">
+                <![CDATA[//メッセージ取得
+                        // public const string LngMessageJa = "ja";
+                        //ドルアットマーク
+                        string fetchXmlMessageKanri = "
+                                    <fetch top='5000' >get_message_first_project_1
+                                        <entity name='px03_tm107' >get_message_first_project_1
+                                            <attribute name='px03_apl_msg_cd'/>get_message_first_project_1
+                                            <attribute name='px03_lng' />get_message_first_project_1
+                                            <attribute name='px03_apl_msg' />get_message_first_project_1
+                                            <filter type='and'>get_message_first_project_1
+                                                <filter type='or'>get_message_first_project_1
+                                                    <condition attribute='px03_apl_msg_cd' operator='eq' value='{$message_code_let_name$}'/>get_message_first_project_1
+                                                </filter>get_message_first_project_1
+                                                <filter type='and'>get_message_first_project_1
+                                                    <condition attribute='px03_lng' operator='eq' value='ja'/>get_message_first_project_1
+                                                </filter>get_message_first_project_1
+                                            </filter>get_message_first_project_1
+                                        </entity>get_message_first_project_1
+                                    </fetch>";
+                        var queryMessageKanri = new FetchExpression(fetchXmlMessageKanri);
+                        var messageKanriEntities = svc.RetrieveMultiple(queryMessageKanri).Entities;
+
+                        var messageList = (from s in messageKanriEntities.AsEnumerable()
+                                                select new
+                                                {
+                                                    aplMsgCd = (s["px03_apl_msg_cd"]).ToString(),
+                                                    lng = (s["px03_lng"]).ToString(),
+                                                    aplMsg = (s["px03_apl_msg"]).ToString()
+                                                }).ToList();
+
+                        //$message$
+                        var $message_let_name$ = (from s in messageList
+                                                    where s.aplMsgCd == $message_code_let_name$ && s.lng == $message_lng_let_name$
+                                                    select new
+                                                    {
+                                                        s.aplMsg
+                                                    }).ToList().First().aplMsg.ToString();            
+                ]]>
+            </Code>   
+        </Snippet>
+    </CodeSnippet>
 </CodeSnippets>
